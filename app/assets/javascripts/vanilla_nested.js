@@ -7,17 +7,21 @@
 
     const data = element.dataset;
     const container = document.querySelector(data.containerSelector);
-    const newHtml = data.html.replace(/_idx_placeholder_/g, Date.now());
+    const newElement = document.getElementById(data.templateid).content.cloneNode(true);
+    const newInput = newElement.querySelector('input');
+    const new_id = Date.now()
+    newInput.id = newInput.id.replace(/_idx_placeholder_/g, new_id)
+    newInput.name = newInput.name.replace(/_idx_placeholder_/g, new_id)
 
     // insert and store reference
     let inserted;
     switch (data.methodForInsert) {
       case ('append'):
-        container.insertAdjacentHTML('beforeend', newHtml);
+        container.appendChild(newElement);
         inserted = container.lastElementChild;
         break;
       case ('prepend'):
-        container.insertAdjacentHTML('afterbegin', newHtml);
+        container.prepend(newElement);
         inserted = container.firstElementChild;
         break;
     }
