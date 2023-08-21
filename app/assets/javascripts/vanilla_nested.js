@@ -8,10 +8,14 @@
     const data = element.dataset;
     const container = document.querySelector(data.containerSelector);
     const newElement = document.getElementById(data.templateid).content.cloneNode(true);
-    const newInput = newElement.querySelector('input');
+    const newFCs = newElement.querySelectorAll('[name]');
     const new_id = Date.now()
-    newInput.id = newInput.id.replace(/_idx_placeholder_/g, new_id)
-    newInput.name = newInput.name.replace(/_idx_placeholder_/g, new_id)
+    newFCs.forEach(fc => {
+      if(fc.getAttribute('id')) {
+        fc.setAttribute('id', fc.getAttribute('id').replace(/_idx_placeholder_/g, new_id))
+      }
+      fc.setAttribute('name', fc.getAttribute('name').replace(/_idx_placeholder_/g, new_id))
+    }) 
 
     // insert and store reference
     let inserted;
