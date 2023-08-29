@@ -15,7 +15,7 @@
         fc.setAttribute('id', fc.getAttribute('id').replace(/_idx_placeholder_/g, new_id))
       }
       fc.setAttribute('name', fc.getAttribute('name').replace(/_idx_placeholder_/g, new_id))
-    }) 
+    })
 
     // insert and store reference
     let inserted;

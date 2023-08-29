@@ -30,7 +30,7 @@ module VanillaNested
       method_for_insert = %i[append prepend].include?(insert_method.to_sym) ? insert_method : :append
 
       classes = "vanilla-nested-add #{link_classes}"
-      template_id = "template-#{dom_id(object)}"
+      template_id = "template-#{dom_id(object)}-#{SecureRandom.uuid}"
       data = {
         'container-selector': container_selector,
         'templateId': template_id,
